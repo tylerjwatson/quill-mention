@@ -35,7 +35,10 @@ class Mention {
       },
       onClose() {
         return true;
-      }
+      },
+      // eslint-disable-next-line no-unused-vars
+      onItemSelected(item) {
+      },
     };
 
     Object.assign(this.options, options, {
@@ -174,6 +177,8 @@ class Mention {
     this.quill.insertText(this.mentionCharPos + 1, ' ', Quill.sources.API);
     this.quill.setSelection(this.mentionCharPos + 2, Quill.sources.API);
     this.hideMentionList();
+    this.onSelectionChange();
+    this.options.onItemSelected(data);
   }
 
   onItemMouseEnter(e) {
